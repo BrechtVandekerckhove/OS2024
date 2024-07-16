@@ -1,0 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="logoSportTitel-container">
+	<img class="logoSport" th:src="@{${'/img/'+sport.sportsName+'.webp'}}" />
+	<h1 th:text="#{${'sport.' + sport.sportsName}}"></h1>
+</div>

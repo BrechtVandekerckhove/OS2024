@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{${'sport.' + sport.sportsName}}"></title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div th:replace="~{/fragments/header::header}"></div>
+	<main>
+		<div th:replace="~{/fragments/headerSport::div}"></div>
+		<h2 th:text="#{games}"></h2>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th th:text="#{sport}"></th>
+					<th th:text="#{disciplines}"></th>
+					<th th:text="#{start}"></th>
+					<th th:text="#{stadium}"></th>
+					<th th:text="#{price}"></th>
+					<th th:text="#{freePlaces}"></th>
+					<th th:text="#{numberOfTickets}"></th>
+					<th th:if="${#authorization.expression('hasRole(''USER'')')}"
+						th:text="#{buyTickets}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block>
+					<tr th:each="game: ${gamesList}">
+						<td th:text="#{'sport.' + ${sport.sportsName}}"></td>
+						<td>
+							<div th:each="discipline: ${game.disciplines}">
+								<span th:text="#{'discipline.' +${discipline.description}}"></span>
+							</div>
+						</td>
+						<td th:with="df=#{date.format.pattern}"
+							th:text="${#temporals.format(game.start,df)}"></td>
+						<td th:text="${game.stadium}"></td>
+						<!-- admin ziet prijs, user ziet prijs als vrije plaatsen zijn-->
+						<td
+							th:text="${#authorization.expression('hasRole(''ADMIN'')') or
+						#authorization.expression('hasRole(''USER'')') and
+						game.freePlaces>0}?'&euro;'+${#numbers.formatDecimal(game.price,1,2)}:'- - -'">
+						</td>
+						<td th:text="${game.freePlaces}"></td>
+						<th:block
+							th:each="gameAndNumberTickets: ${numberOfTicketsPerGameMap}">
+							<td th:if="${gameAndNumberTickets.key.gameID == game.gameID}"
+								th:text="${gameAndNumberTickets.value}"></td>
+						</th:block>
+						<td
+							th:if="${#authorization.expression('hasRole(''USER'')') and game.freePlaces == 0}"
+							th:text="#{soldOut}"></td>
+						<td
+							th:if="${#authorization.expression('hasRole(''USER'')') and game.freePlaces > 0}">
+							<a
+							th:href="|/sports/${sport.sportsName}/tickets-game=${game.gameID}|">
+								<button id="button-buyTickets" class="buttonBuyTickets"
+									th:text="#{tickets}"></button>
+						</a>
+						</td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+		<h3 th:if="${numberOfTickets}"
+			th:text="|${numberOfTickets} #{${numberOfTickets > 1 ? 'ticketsPurchased' : 'ticketPurchased'}}|"></h3>
+		<a th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+			th:href="|/sports/${sport.sportsName}/newGame|"><button
+				id="button-addGame" th:text="#{addGame}"></button></a>
+	</main>
+</body>
+</html>

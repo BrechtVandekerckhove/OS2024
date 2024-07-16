@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{sports}"></title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div th:replace="~{/fragments/header::header}"></div>
+	<main>
+		<!-- 	Sporttegels -->
+		<div class="grid-container-sportsList">
+			<div th:each="sport: ${sportList}">
+				<div>
+					<a th:href="|/sports/${sport.sportsName}|"><img
+						class="logoSport" th:src="@{${'/img/'+sport.sportsName+'.avif'}}" /></a>
+				</div>
+				<div>
+					<a th:href="|/sports/${sport.sportsName}|"
+						th:text="#{${'sport.' + sport.sportsName}}"></a>
+				</div>
+			</div>
+
+		</div>
+		<!-- Knop overzicht tickets -->
+		<th:block
+			th:if="${#authorization.expression('hasRole(''USER'')') and !ticketMap.isEmpty()}">
+			<button id="button-ticket" onclick="toggleTableVisibility()">
+				<span th:text="#{button.tickets}"></span> <img
+					th:src="@{/img/dropDown.png}" id="dropDown"/>
+			</button>
+			<!-- Tabel overzicht tickets -->
+			<table id="ticketTable" class="table" style="display: none">
+				<thead>
+					<tr>
+						<th th:text="#{sport}"></th>
+						<th th:text="#{disciplines}"></th>
+						<th th:text="#{start}"></th>
+						<th th:text="#{stadium}"></th>
+						<th th:text="#{price}"></th>
+						<th th:text="#{numberOfTickets}"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="ticket: ${ticketMap}">
+						<td th:text="#{'sport.' + ${ticket.key.sport.sportsName}}"></td>
+						<td>
+							<div th:each="discipline: ${ticket.key.disciplines}">
+								<span th:text="#{'discipline.' +${discipline.description}}"></span>
+							</div>
+						</td>
+						<td
+							th:text="${#temporals.format(ticket.key.start,'dd/MM/yyyy HH:mm')}"></td>
+						<td th:text="${ticket.key.stadium}"></td>
+						<td
+							th:text="|&euro;${#numbers.formatDecimal(ticket.key.price,1,2)}|"></td>
+						<td th:text="${ticket.value}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</th:block>
+	</main>
+
+	<script th:src="@{/scripts/index.js}"></script>
+</body>
+</html>

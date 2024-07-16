@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{login.titleTab}"></title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body onload='document.loginForm.username.focus();'>
+<div th:replace="~{/fragments/header::header}"></div>
+	<main class="container">
+		<div class="left-side">
+			<img th:src="@{/img/loginParis.jpg}" alt="Paris" />
+		</div>
+		<div class="right-side">
+			<div id="login-box">
+				<h3 th:text="#{login.login}"></h3>
+				<div th:if="${error}" class="error" th:text="#{error.login}"></div>
+				<div th:if="${msg}" class="msg" th:text="#{msg.logout}"></div>
+				<form th:action="@{/login}" method="post" name="loginForm">
+					<table class="table-login">
+						<tr>
+							<td th:text="#{login.user}"></td>
+							<td><input type='text' name='username' value=''></td>
+						</tr>
+						<tr>
+							<td th:text="#{login.password}"></td>
+							<td><input type='password' name='password' /></td>
+						</tr>
+						<tr>
+							<td colspan='2'><button name="submit" type="submit"
+									th:text="#{login.login}"></button></td>
+						</tr>
+					</table>
+					<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

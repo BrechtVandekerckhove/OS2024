@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{403.accessDenied}"></title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<h1>HTTP Status 403</h1>
+	<h2 th:text="#{403.accessDenied}"></h2>
+
+	<form th:action="@{/logout}" method="post">
+		<button type="submit" th:text="#{logout}"></button>
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}" />
+	</form>
+
+</body>
+</html>

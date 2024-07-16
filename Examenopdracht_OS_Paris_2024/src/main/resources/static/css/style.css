@@ -1,0 +1,451 @@
+.headerContainer {
+	display: flex;
+	align-items: center;
+}
+
+.headerContainer #user {
+	margin-left: auto;
+}
+
+body {
+	font-family: "Olympic Sans", Arial, Helvetica, sans-serif;
+	background-color: #212121;
+	color: white;
+	margin: 20px;
+}
+
+.table-login {
+	border-collapse: collapse;
+	width: 25%;
+}
+
+.table-login th {
+	background: #ffbb00;
+}
+.table-login  input{
+	line-height: 1.5rem;
+	margin:7px;
+}
+
+.table {
+	margin-top: 15px;
+	border-collapse: collapse;
+	width: auto;
+}
+
+.table td {
+	padding: 15px;
+}
+
+.table thead th {
+	background-color: #212121;
+	color: #ffffff;
+	border: 3px solid #54585d;
+	font-size: 1.125rem;
+	font-weight: 500;
+	padding: 15px;
+}
+
+.table tbody tr {
+	background-color: #f9fafb;
+}
+
+.table tbody td {
+	color: #636363;
+	border: 3px solid #dddfe1;
+	text-align: center;
+}
+
+.table tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+button {
+	background: #fff;
+	backface-visibility: hidden;
+	border-radius: .375rem;
+	border-style: solid;
+	border-width: .125rem;
+	box-sizing: border-box;
+	color: #212121;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.125rem;
+	font-weight: 600;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+	padding: .875rem 1.125rem;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	transform: translateZ(0) scale(1);
+	transition: transform .2s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+	margin-top: 15px;
+}
+
+.buttonBuyTickets {
+	line-height: 0.5;
+	font-size: 1rem;
+	background-color: #212121;
+	color: white;
+	margin: auto;
+	padding: .875rem 1rem;
+	font-size: 1rem;
+}
+
+logo {
+	width: 100px;
+	height: auto;
+	margin-right: 10px;
+}
+
+.logoSport {
+	height: 225px;
+	border-radius: 10px;
+}
+
+.logoUser {
+	height: 55px;
+	margin-right: 10px;
+	margin-bottom: auto;
+	background-color: white;
+	border-radius: 5px;
+}
+
+a {
+	color: white;
+	font-size: 1.125rem;
+	text-decoration: none;
+}
+
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	background-color: #f2dede;
+	width:200px;
+
+}
+
+.msg {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #212121;
+	background-color: white;
+}
+
+.container {
+	display: flex;
+}
+
+.left-side {
+	flex: 1;
+}
+
+.left-side img {
+	width: auto;
+	height: 75vh;
+}
+
+.right-side {
+	flex: 2;
+	display: flex;
+	align-items: center;
+}
+
+#login-box {
+	width: 350px;
+	padding: 20px;
+	margin-left: 75px;
+	border-radius: 20px;
+	border: 4px solid;
+	border-color: white;
+	font-size: 1.125rem;
+	font-weight: 600;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+}
+
+input select {
+	margin-left: 15px;
+	line-height: 1.5;
+}
+
+.errorMessage {
+	color: #CE2029;
+}
+
+button {
+	background: #fff;
+	backface-visibility: hidden;
+	border-radius: .375rem;
+	border-style: solid;
+	border-width: .125rem;
+	box-sizing: border-box;
+	color: #212121;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.125rem;
+	font-weight: 600;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+	padding: .875rem 1.125rem;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	transform: translateZ(0) scale(1);
+	transition: transform .2s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+	margin-top: 15px;
+}
+
+#logout {
+	margin-left: 10px;
+	margin-top: auto;
+}
+
+.grid-container-sportsList {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-container-sportsList>div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+
+#user {
+	display: flex;
+}
+
+.logoSportTitel-container {
+	display: flex;
+	align-items: center;
+}
+
+.logoSportTitel-container .logoSport {
+	margin-right: 20px;
+	height: 175px;
+}
+/* FORM ELEMENTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+	--white: #afafaf;
+	--red: #e31b23;
+	--borderFormEls: hsl(0, 0%, 10%);
+	--bgFormEls: hsl(0, 0%, 20%);
+	--bgFormElsFocus: hsl(0, 7%, 30%);
+}
+
+.form-container ul {
+	list-style: none;
+}
+
+.form-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.my-form li, .my-form .grid>*:not(:last-child) {
+	margin-bottom: 1.5rem;
+}
+
+.my-form select, .my-form input, .my-form textarea, .my-form button {
+	width: 100%;
+	line-height: 1.5;
+	padding: 15px 10px;
+	margin-top: 5px;
+	margin-left: 0px;
+	border: 1px solid var(--borderFormEls);
+	color: var(--white);
+	background: var(--bgFormEls);
+	transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+		transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.my-form textarea {
+	height: 170px;
+}
+
+.my-form ::placeholder {
+	color: inherit;
+	/*Fix opacity issue on Firefox*/
+	opacity: 1;
+}
+
+.my-form select:focus, .my-form input:focus, .my-form textarea:focus,
+	.my-form button:enabled:hover, .my-form button:focus, .my-form input[type="checkbox"]:focus+label
+	{
+	background: var(--bgFormElsFocus);
+}
+
+.my-form select:focus, .my-form input:focus, .my-form textarea:focus {
+	transform: scale(1.02);
+}
+
+.my-form *.required, .my-form select {
+	background-repeat: no-repeat;
+	background-position: center right 30px;
+	background-size: 13px 13px;
+}
+
+.my-form *.required {
+	background-image:
+		url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg);
+}
+
+.my-form select *.required {
+	background-image:
+		url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/down.svg);
+}
+
+/* FORM BTNS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.my-form .required-msg {
+	display: none;
+	background:
+		url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg)
+		no-repeat center left/15px 15px;
+	padding-left: 20px;
+}
+
+.my-form .btn-grid {
+	position: relative;
+	overflow: hidden;
+	transition: filter 0.2s;
+}
+
+.my-form button {
+	font-weight: bold;
+	text-align: center;
+}
+
+.my-form button>* {
+	display: inline-block;
+	width: 100%;
+	transition: transform 0.4s ease-in-out;
+}
+
+.my-form button .back {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-110%, -50%);
+}
+
+.my-form button:enabled:hover .back, .my-form button:focus .back {
+	transform: translate(-50%, -50%);
+}
+
+.my-form button:enabled:hover .front, .my-form button:focus .front {
+	transform: translateX(110%);
+}
+
+/* CUSTOM CHECKBOX
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.my-form input[type="checkbox"] {
+	position: absolute;
+	left: -9999px;
+}
+
+.my-form input[type="checkbox"]+label {
+	position: relative;
+	display: inline-block;
+	padding-left: 2rem;
+	transition: background 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.my-form input[type="checkbox"]+label::before, .my-form input[type="checkbox"]+label::after
+	{
+	content: '';
+	position: absolute;
+}
+
+.my-form input[type="checkbox"]+label::before {
+	left: 0;
+	top: 6px;
+	width: 18px;
+	height: 18px;
+	border: 2px solid var(--white);
+}
+
+.my-form input[type="checkbox"]:checked+label::before {
+	background: var(--red);
+}
+
+.my-form input[type="checkbox"]:checked+label::after {
+	left: 7px;
+	top: 7px;
+	width: 6px;
+	height: 14px;
+	border-bottom: 2px solid var(--white);
+	border-right: 2px solid var(--white);
+	transform: rotate(45deg);
+}
+/* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (min-width: 600px) {
+	.my-form .grid {
+		display: grid;
+		grid-gap: 1.5rem;
+	}
+	.my-form .grid-2 {
+		grid-template-columns: 1fr 1fr;
+		
+	}
+	.my-form .grid-3 {
+		grid-template-columns: auto auto auto;
+		align-items: center;
+	}
+	.my-form .grid>*:not(:last-child) {
+		margin-bottom: 0;
+	}
+	.my-form .required-msg {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 541px) {
+	.my-form input[type="checkbox"]+label::before {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	.my-form input[type="checkbox"]:checked+label::after {
+		top: 3px;
+	}
+}
+/*
+---------------------------------------------------------------------*/
+.buyTicket-form input {
+	padding: 15px 10px;
+	margin-top: 0px;
+	margin-left: 0px;
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: -.01em;
+	line-height: 1.3;
+}
+
+#dropDown{
+	vertical-align:middle;
+	margin-bottom:5px;
+}

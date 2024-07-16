@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="|#{${'sport.' + sport.sportsName}} - #{addGame}|"></title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div th:replace="~{/fragments/header::header}"></div>
+	<main>
+		<div th:replace="~{/fragments/headerSport::div}"></div>
+		<form class="my-form"
+			th:action="@{${'/sports/'+sport.sportsName+'/newGame'}}"
+			th:object="${game}" method="post">
+			<div class="form-container">
+				<ul>
+					<li><label th:text="#{start}"></label> <input
+						type="datetime-local" th:field="*{start}" th:class="required" />
+						<span th:if="${#fields.hasErrors('start')}"
+						th:class="errorMessage" th:errors="*{start}"></span></li>
+					<li><label th:text="#{stadium}"></label> <select
+						th:field="*{stadium}" th:class="required">
+							<option th:each="stadium: ${listStadiums}" th:value="${stadium}"
+								th:text="${stadium}"></option>
+					</select> <span th:if="${#fields.hasErrors('stadium')}"
+						th:class="errorMessage" th:errors="*{stadium}"></span></li>
+					<li>
+						<div class="grid grid-2">
+							<div>
+								<label th:text="|#{discipline} 1|"></label> <select
+									name="discipline1id">
+									<option th:text="|-- #{selectDiscipline} --|" value=-1></option>
+									<option th:each="discipline: ${listDisciplines}"
+										th:value="${discipline.id}"
+										th:text="#{'discipline.' +${discipline.description}}"></option>
+								</select> <span th:if="${#fields.hasErrors('disciplines')}"
+									th:class="errorMessage" th:errors="*{disciplines}"></span>
+							</div>
+
+
+							<div>
+								<label th:text="|#{discipline} 2|">:</label> <select
+									name="discipline2id">
+									<option th:text="|-- #{selectDiscipline} --|" value=-1></option>
+									<option th:each="discipline: ${listDisciplines}"
+										th:value="${discipline.id}"
+										th:text="#{'discipline.'+ ${discipline.description}}"></option>
+								</select> <span th:if="${#fields.hasErrors('disciplines')}"
+									th:class="errorMessage" th:errors="*{disciplines}"></span>
+							</div>
+						</div>
+					<li><label th:text="#{price}"></label> <input type="text"
+						th:field="*{price}" th:class="required" /> <span
+						th:if="${#fields.hasErrors('price')}" th:class="errorMessage"
+						th:errors="*{price}"></span></li>
+					<li><div class="grid grid-2">
+							<div>
+								<label th:text="|#{olympicNumber} 1|"></label><input type="text"
+									th:field="*{olympicNumber1}" th:class="required" /> <span
+									th:if="${#fields.hasErrors('olympicNumber1')}"
+									th:class="errorMessage" th:errors="*{olympicNumber1}"></span>
+							</div>
+							<div>
+								<label th:text="|#{olympicNumber} 2|"></label><input type="text"
+									th:field="*{olympicNumber2}" th:class="required" /> <span
+									th:if="${#fields.hasErrors('olympicNumber2')}"
+									th:class="errorMessage" th:errors="*{olympicNumber2}"></span>
+							</div>
+						</div>
+					<li><label th:text="#{freePlaces}"></label> <input type="text"
+						th:field="*{freePlaces}" th:class="required" /> <span
+						th:if="${#fields.hasErrors('freePlaces')}" th:class="errorMessage"
+						th:errors="*{freePlaces}"></span></li>
+					<li>
+						<div class="grid grid-3">
+							<div class="required-msg" th:text="#{requiredFields}"></div>
+							<button class="btn-grid" type="submit">
+								<span class="back"> <img
+									src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg"
+									alt="">
+								</span> <span class="front" th:text="#{submit}"></span>
+							</button>
+							<button class="btn-grid" type="reset">
+								<span class="back"> <img
+									src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg"
+									alt="">
+								</span> <span class="front" th:text="#{reset}"></span>
+							</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</form>
+
+	</main>
+</body>
+</html>

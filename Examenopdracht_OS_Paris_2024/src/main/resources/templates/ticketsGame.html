@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div th:replace="~{/fragments/header::header}"></div>
+	<main>
+		<div th:replace="~{/fragments/headerSport::div}"></div>
+		<h1 th:text="#{game}"></h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th th:text="#{sport}"></th>
+					<th th:text="#{disciplines}"></th>
+					<th th:text="#{start}"></th>
+					<th th:text="#{stadium}"></th>
+					<th th:text="#{price}"></th>
+					<th th:text="#{freePlaces}"></th>
+					<th th:text="#{numberOfTickets}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="#{'sport.' + ${sport.sportsName}}"></td>
+					<td>
+						<div th:each="discipline: ${game.disciplines}">
+							<span th:text="#{'discipline.' +${discipline.description}}"></span>
+						</div>
+					</td>
+					<td th:with="df=#{date.format.pattern}"
+						th:text="${#temporals.format(game.start,df)}"></td>
+					<td th:text="${game.stadium}"></td>
+
+					<td th:text="|&euro; ${#numbers.formatDecimal(game.price,1,2)}|">
+					</td>
+					<td th:text="${game.freePlaces}"></td>
+					<td th:text="${numberOfTickets}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+		<h2 th:text="#{buyTickets}"></h2>
+		<form th:action="@{${'tickets-game='+game.gameID}}"
+			th:object="${ticketRequest}" class="buyTicket-form" method="post">
+			<input th:placeholder="#{number}" type="number"
+				th:field="*{numberOfTickets}" />
+			<button type="submit" th:text="#{buyTickets}"></button>
+			<div th:if="${#fields.hasErrors('numberOfTickets')}"
+				th:class="errorMessage" th:errors="*{numberOfTickets}"></div>
+		</form>
+	</main>
+</body>
+</html>

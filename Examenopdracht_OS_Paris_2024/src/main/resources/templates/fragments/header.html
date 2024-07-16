@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<header>
+	<div class="headerContainer">
+		<a th:href="@{/sports}"> <img th:src="@{/img/logo.webp}"
+			alt="logo" class="logo" />
+		</a>
+		<h1 th:text="#{login.title}"></h1>
+		<img
+			src="https://olympics.com/images/static/b2p-images/logo_color.svg"
+			alt="olympic rings" style="margin-left: 30px" />
+
+		<th:block th:if="${username}!=null">
+			<div id="user">
+				<img th:src="@{/img/user.png}" alt="user" class="logoUser">
+				<p th:text="|${username} - ${role}|"></p>
+				<form th:action="@{/logout}" method="post">
+					<button type="submit" th:text="#{logout}" id="logout"></button>
+					<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
+				</form>
+			</div>
+		</th:block>
+	</div>
+</header>
